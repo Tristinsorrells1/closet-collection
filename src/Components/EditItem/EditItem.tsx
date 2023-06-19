@@ -91,7 +91,6 @@ export const EditItem: React.FC = (): JSX.Element => {
 
   return (
     <div className="edit-form-container">
-      <h2>Edit Item Details</h2>
       {loading && <p>Loading...</p>}
       <form className="edit-form" onSubmit={(e => {e.preventDefault(); handleSubmit(e)})}>
         <select  className="dropdown" id="itemType" name="clothing_type" required>
