@@ -9,9 +9,9 @@ interface MenuItem {
 
 export const AppMenu: React.FC = () => {
   const menuItems: MenuItem[] = [
-    { text: "My Closet", path: "/myCloset" },
+    { text: "Closet", path: "/myCloset" },
     { text: "Calendar", path: "/calendar" },
-    { text: "My Lists", path: "/lists" },
+    { text: "Lists", path: "/lists" },
     { text: "Create New List", path: "/addList" },
     { text: "Add New Item", path: "/addItem" },
   ];

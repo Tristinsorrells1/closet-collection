@@ -17,7 +17,6 @@
 ## Table of Contents
 
 [Abstract](#abstract) |
-[Installation Instructions](#installation-instructions) |
 [Deployed Link](#deployed-link) |
 [App Demo](#app-demo) |
 [Technologies](#technologies) |
@@ -39,33 +38,10 @@ Closet Collection is your ultimate solution to organize your wardrobe. With this
 
 ---
 
-## Installation Instructions:
-
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
-
-1. Fork the Repo from the [Repository](https://github.com/closet-manager/closet-manager-fe)
-2. Clone the repo
-   ```sh
-   git clone git@github.com:closet-manager/closet-manager-fe.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Run npm start
-   ```sh
-   npm start
-   ```
-5. Use the Link that is given in the Terminal & Open in Browser
-   ```sh
-   Example: http://localhost:5173/
-   ```
-
----
   
 ## Deployed Link:
 
-[Click here to view deployed app on Vercel](https://closet-manager-fe.vercel.app/)
+[Click here to view deployed app on Vercel](https://closet-collection.vercel.app/)
 
 ---
 
@@ -107,19 +83,6 @@ Closet Collection is your ultimate solution to organize your wardrobe. With this
 [//]: <> (Who worked on this application? Link to their GitHubs.)
 
 <div>
-  <img src="https://img.shields.io/badge/-Patt%20Sookmark-B2AC98" height="30" width="100">
-  <p><strong>Connect with:</strong></p>
-  <a href="https://www.linkedin.com/in/pattsookmark/"> 
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-  </a>
-  <a href="https://github.com/pattpjy">
-    <img src="https://img.shields.io/badge/-github-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
-  </a>
-  <a href="mailto: ps.pijiya@gmail.com">
-    <img src="https://img.shields.io/badge/-gmail-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge">
-  </a>
-
----
   
   <img src="https://img.shields.io/badge/-Tristin%20Sorrells-c4a4a3" height="30" width="100">
   <p><strong>Connect with:</strong></p>
@@ -134,49 +97,7 @@ Closet Collection is your ultimate solution to organize your wardrobe. With this
   </a>
 </div>
 
----
-  
-  <img src="https://img.shields.io/badge/-Sarah%20Hampton-3a5311" height="30" width="100">
-  <p><strong>Connect with:</strong></p>
-  <a href="https://www.linkedin.com/in/sarah-gwyn-hampton/"> 
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-  </a>
-  <a href="https://github.com/SHampton22">
-    <img src="https://img.shields.io/badge/-github-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
-  </a>
-  <a href="mailto: sarahgwynhampton@gmail.com">
-    <img src="https://img.shields.io/badge/-gmail-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge">
-  </a>
-</div>
 
----
-  
-  <img src="https://img.shields.io/badge/-Blanche%20Haddad-3a5361" height="30" width="100">
-  <p><strong>Connect with:</strong></p>
-  <a href="https://www.linkedin.com/in/blanche-haddad-denver/"> 
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-  </a>
-  <a href="https://github.com/BHaddad1">
-    <img src="https://img.shields.io/badge/-github-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
-  </a>
-  <a href="mailto: blancherachel@gmail.com">
-    <img src="https://img.shields.io/badge/-gmail-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge">
-  </a>
-</div>
-
----
-  
-  <img src="https://img.shields.io/badge/-Karrar%20Qasim-006a89" height="30" width="100">
-  <p><strong>Connect with:</strong></p>
-  <a href="https://www.linkedin.com/in/karrar-qasim-b6307024b/"> 
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-  </a>
-  <a href="https://github.com/KarrarQ">
-    <img src="https://img.shields.io/badge/-github-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
-  </a>
-  <a href="mailto: karawr1996@gmail.com">
-    <img src="https://img.shields.io/badge/-gmail-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge">
-  </a>
 </div>
 
 ---
