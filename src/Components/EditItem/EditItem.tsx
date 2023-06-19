@@ -125,7 +125,7 @@ export const EditItem: React.FC = (): JSX.Element => {
         </select>
         <label htmlFor="size" className="size-input">
           Size
-          <input id="itemSize" type="text" name="size" />
+          <input className="size-box" id="itemSize" type="text" name="size" />
         </label>
         <label htmlFor="notes" className="notes-input">
           Notes

@@ -13,3 +13,53 @@
   padding-bottom: 25%;
   width: 50vw;
 }
+
+.notes-box,
+.size-box {
+  margin: 0 auto 0 auto;
+  width: 100%;
+  font-size: 2vw;
+}
+
+.size-input {
+  width: 100%;
+}
+
+.size-box {
+  align-self: center;
+}
+
+.dropdown {
+  text-align: center;
+}
+
+@media (min-width: 695px) {
+  .edit-form {
+     margin-top: 10vh;
+    }
+}
+
+@media (min-width: 843px) {
+  .edit-form {
+    margin-top: 15vh;
+  }
+}
+
+@media (min-width: 941px) {
+  .edit-form {
+    margin-top: 30vh;
+  }
+
+  .notes-box,
+  .size-box {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .edit-form {
+    margin-top: 50vh;
+  }
+}
