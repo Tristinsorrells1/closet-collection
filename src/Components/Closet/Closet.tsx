@@ -3,6 +3,7 @@ import "./Closet.css";
 import { useState, useEffect } from "react";
 import { filterItems, getAllItems } from "../../apiCall";
 import GridLoader from "react-spinners/GridLoader";
+// import Glide from '@glidejs/glide';
 
 interface attributes {
   season: string;
@@ -25,6 +26,10 @@ export const Closet = (): JSX.Element => {
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [change, setChange] = useState<boolean>(false);
+  const [colorOptionsVisible, setColorOptionsVisible] = useState<boolean>(false);
+  const [seasonOptionsVisible, setSeasonOptionsVisible] = useState<boolean>(false);
+  const [favoriteOptionsVisible, setFavoriteOptionsVisible] = useState<boolean>(false);
+
 
   useEffect(() => {
     getAllItems()
@@ -42,17 +47,20 @@ export const Closet = (): JSX.Element => {
         setLoading(false);
       });
   }, [change]);
+ 
 
   const mappedItems = filteredItems.map((item: Item): JSX.Element => {
     return (
-      <Card
-        key={item.id}
-        id={item.id}
-        image={item.attributes.image_url}
-        setChange={setChange}
-      />
+        <Card
+          key={item.id}
+          id={item.id}
+          image={item.attributes.image_url}
+          setChange={setChange}
+        />
     );
   });
+
+
 
   const handleFilter = async (): Promise<void> => {
     const clothing_type = document.querySelector<HTMLSelectElement>("#filter--clothing-type")!;
@@ -87,43 +95,100 @@ export const Closet = (): JSX.Element => {
     setLoading(false);
   };
 
+  const toggleColorOptions = () => {
+    setColorOptionsVisible(!colorOptionsVisible)
+  }
+
+  const toggleSeasonOptions = () => {
+    setSeasonOptionsVisible(!seasonOptionsVisible)
+  }
+
+  const toggleFavoriteOptions = () => {
+    setFavoriteOptionsVisible(!favoriteOptionsVisible)
+  }
+
   return (
     <div className="closet-container">
-      <div id="filter" onChange={handleFilter}>
-        <select id="filter--clothing-type" name="type">
-          <option value="">Type</option>
-          <option value="tops">Tops</option>
-          <option value="bottoms">Bottoms</option>
-          <option value="outerwear">Outerwear</option>
-          <option value="shoes">Shoes</option>
-          <option value="accessories">Accessories</option>
-          <option value="other">Other</option>
-        </select>
-        <select id="filter--color" name="color">
-          <option value="">Color</option>
-          <option value="red">Red</option>
-          <option value="orange">Orange</option>
-          <option value="yellow">Yellow</option>
-          <option value="green">Green</option>
-          <option value="blue">Blue</option>
-          <option value="purple">Purple</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="neutral">Neutral</option>
-          <option value="multi">Multi</option>
-        </select>
-        <select id="filter--season" name="season">
-          <option value="">Season</option>
-          <option value="fall">Fall</option>
-          <option value="winter">Winter</option>
-          <option value="spring">Spring</option>
-          <option value="summer">Summer</option>
-        </select>
-        <select id="filter--favorite" name="favorite">
-          <option value="">All</option>
-          <option value="true">Favorites</option>
-        </select>
+      <div className="item-type-container">
+        <button className="item-type-button item-type-spacer">All Items</button>
+        <button className="item-type-button">Tops</button>
+        <button className="item-type-button">Bottoms</button>
+        <button className="item-type-button">Shoes</button>
+        <button className="item-type-button">Accessories</button>
       </div>
+      <section className="closet-main">
+        <div className="filter-options-container">
+        <button className="filter-option" onClick={(() => toggleColorOptions())}>Color
+        </button>
+        {colorOptionsVisible && <section className="color-options">
+          <div className="filter-label-and-input">
+            <label htmlFor="Red">Red</label>
+            <input type="checkbox" id="Red" name="Red" value="Red"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="Blue">Blue</label>
+            <input type="checkbox" id="Blue" name="Blue" value="Blue"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="Green">Green</label>
+            <input type="checkbox" id="Green" name="Green" value="Green"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="Purple">Purple</label>
+            <input type="checkbox" id="Purple" name="Purple" value="Purple"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="Orange">Orange</label>
+            <input type="checkbox" id="Orange" name="Orange" value="Orange"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="Yellow">Yellow</label>
+            <input type="checkbox" id="Yellow" name="Yellow" value="Yellow"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="Black">Black</label>
+            <input type="checkbox" id="Black" name="Black" value="Black"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="White">White</label>
+            <input type="checkbox" id="White" name="White" value="White"/>
+          </div>
+          <div className="filter-label-and-input">
+            <label htmlFor="Multi">Multi</label>
+            <input type="checkbox" id="Multi" name="Multi" value="Multi"/>
+          </div>
+        </section>}
+          <button className="filter-option" onClick={(() => toggleSeasonOptions())}>Season
+          </button>
+          {seasonOptionsVisible && <section className="season-options">
+            <div className="filter-label-and-input">
+              <label htmlFor="Fall">Fall</label>
+              <input type="checkbox" id="Fall" name="Fall" value="Fall"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Winter">Winter</label>
+              <input type="checkbox" id="Winter" name="Winter" value="Winter"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Spring">Spring</label>
+              <input type="checkbox" id="Spring" name="Spring" value="Spring"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Summer">Summer</label>
+              <input type="checkbox" id="Summer" name="Summer" value="Summer"/>
+            </div>
+          </section>}
+          <button className="filter-option" onClick={(() => toggleFavoriteOptions())}>Favorites
+          </button>
+          {favoriteOptionsVisible && <section className="favorite-options">
+            <div className="filter-label-and-input">
+              <label htmlFor="Favorites">Only Show Favorites</label>
+              <input type="checkbox" id="Favorites" name="Favorites" value="Favorites"/>
+            </div>
+          </section>}
+        </div>
+        <div className="cards-container">{mappedItems}</div>
+      </section>
       {loading && (
         <div className="closet-loader">
           <GridLoader
@@ -140,7 +205,7 @@ export const Closet = (): JSX.Element => {
         </p>
       )}
       {!filteredItems.length && !loading && <p className="error-text">No Items Found</p>}
-      <div className="cards-container">{mappedItems}</div>
+      {/* <div className="cards-container">{mappedItems}</div> */}
     </div>
   );
 };

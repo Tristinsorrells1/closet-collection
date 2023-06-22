@@ -1,7 +1,8 @@
 .closet-container {
-  height: 70vh;
+  height: 80vh;
+  padding-bottom: 5vh;
+  margin-top: 10vh;
 }
-
 
 #filter {
   background-color: #bbd0ff;
@@ -15,7 +16,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-bottom: 17%;
+  border: 2px solid green;
+  width: 75vw;
 }
 
 h2 {
@@ -53,4 +55,50 @@ h2 {
   font-size: 20px;
   margin-left: 30%;
   margin-top: 30%;
+}
+
+.item-type-container {
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+.item-type-button {
+  background-color: #F1F1F1;
+  text-decoration: underline;
+  color: rgb(45, 44, 44);
+  padding: 5px;
+  flex-basis: fit-content;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.item-type-spacer {
+  padding-left: 20vw;
+}
+
+.filter-option {
+  display: flex;
+  padding: 0 0 0 2vw;
+  flex-direction: column;
+  width: 18vw;
+  background-color: #F1F1F1;
+  border-radius: 0;
+}
+
+.filter-label-and-input {
+  display: flex;
+  width: 7vw;
+  border: 2px solid blue;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 6vw;
+}
+
+.closet-main {
+  display: flex;
 }
