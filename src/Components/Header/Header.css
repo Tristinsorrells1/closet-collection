@@ -1,11 +1,15 @@
 .logo-img {
   cursor: pointer;
-  height: 20vh;
+  height: 5vh;
+  left: 0;
+  position: fixed;
+  padding: 5px;
 }
 
 .header-container {
-  display: flex;
-  justify-content: center;
-  height: 20vh;
-  padding-top: 5%;
+  height: 7vh;
+  background-color: rgb(52, 49, 49);
+  position: fixed;
+  left: 0;
+  width: 100%;
 }
