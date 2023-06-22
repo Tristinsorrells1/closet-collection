@@ -7,8 +7,9 @@
 }
 
 .header-container {
-  display: flex;
-  justify-content: center;
   height: 7vh;
   background-color: rgb(52, 49, 49);
+  position: fixed;
+  left: 0;
+  width: 100%;
 }
