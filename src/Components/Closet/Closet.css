@@ -16,7 +16,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 2px solid green;
   width: 75vw;
 }
 
@@ -71,34 +70,63 @@ h2 {
   background-color: #F1F1F1;
   text-decoration: underline;
   color: rgb(45, 44, 44);
-  padding: 5px;
+  padding: 2px;
   flex-basis: fit-content;
   flex-grow: 0;
   flex-shrink: 0;
+  margin-right: 5px;
 }
 
 .item-type-spacer {
-  padding-left: 20vw;
+  margin-left: auto;
 }
 
 .filter-option {
   display: flex;
-  padding: 0 0 0 2vw;
   flex-direction: column;
   width: 18vw;
+  height: 5vh;
   background-color: #F1F1F1;
   border-radius: 0;
+  text-align: center;
+}
+
+.filter-icon-container {
+  display: flex;
+  height: 6vh;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid grey;
+  width: 98%;
+}
+
+.expand-icon,
+.minimize-icon {
+  height: 3vh;
+  padding: 0;
+  margin: 0;
 }
 
 .filter-label-and-input {
   display: flex;
-  width: 7vw;
-  border: 2px solid blue;
+  width: 15vw;
   align-items: center;
   justify-content: center;
-  padding: 0 0 0 6vw;
+  padding: 0 0 0 3vw;
 }
+
+label {
+  width: 100vw;
+  display: block;
+}
+
 
 .closet-main {
   display: flex;
+  justify-content: space-around;
+}
+
+.filter-options-container {
+  margin-top: 4vh;
 }
