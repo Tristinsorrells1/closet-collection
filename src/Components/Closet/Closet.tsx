@@ -118,48 +118,56 @@ export const Closet = (): JSX.Element => {
       </div>
       <section className="closet-main">
         <div className="filter-options-container">
-        <button className="filter-option" onClick={(() => toggleColorOptions())}>Color
-        </button>
-        {colorOptionsVisible && <section className="color-options">
-          <div className="filter-label-and-input">
-            <label htmlFor="Red">Red</label>
-            <input type="checkbox" id="Red" name="Red" value="Red"/>
+          <div className="filter-icon-container">
+            <button className="filter-option" onClick={(() => toggleColorOptions())}>Color
+            </button>
+            {!colorOptionsVisible && <i className="fa-thin fa-plus expand-icon"></i>}
+            {colorOptionsVisible && <i className="fa-thin fa-minus minimize-icon"></i>}
           </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="Blue">Blue</label>
-            <input type="checkbox" id="Blue" name="Blue" value="Blue"/>
-          </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="Green">Green</label>
-            <input type="checkbox" id="Green" name="Green" value="Green"/>
-          </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="Purple">Purple</label>
-            <input type="checkbox" id="Purple" name="Purple" value="Purple"/>
-          </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="Orange">Orange</label>
-            <input type="checkbox" id="Orange" name="Orange" value="Orange"/>
-          </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="Yellow">Yellow</label>
-            <input type="checkbox" id="Yellow" name="Yellow" value="Yellow"/>
-          </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="Black">Black</label>
-            <input type="checkbox" id="Black" name="Black" value="Black"/>
-          </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="White">White</label>
-            <input type="checkbox" id="White" name="White" value="White"/>
-          </div>
-          <div className="filter-label-and-input">
-            <label htmlFor="Multi">Multi</label>
-            <input type="checkbox" id="Multi" name="Multi" value="Multi"/>
+          {colorOptionsVisible && <section className="color-options">
+            <div className="filter-label-and-input">
+              <label htmlFor="Red">Red</label>
+              <input type="checkbox" id="Red" name="Red" value="Red"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Blue">Blue</label>
+              <input type="checkbox" id="Blue" name="Blue" value="Blue"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Green">Green</label>
+              <input type="checkbox" id="Green" name="Green" value="Green"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Purple">Purple</label>
+              <input type="checkbox" id="Purple" name="Purple" value="Purple"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Orange">Orange</label>
+              <input type="checkbox" id="Orange" name="Orange" value="Orange"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Yellow">Yellow</label>
+              <input type="checkbox" id="Yellow" name="Yellow" value="Yellow"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Black">Black</label>
+              <input type="checkbox" id="Black" name="Black" value="Black"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="White">White</label>
+              <input type="checkbox" id="White" name="White" value="White"/>
+            </div>
+            <div className="filter-label-and-input">
+              <label htmlFor="Multi">Multi</label>
+              <input type="checkbox" id="Multi" name="Multi" value="Multi"/>
           </div>
         </section>}
-          <button className="filter-option" onClick={(() => toggleSeasonOptions())}>Season
-          </button>
+        <div className="filter-icon-container">
+            <button className="filter-option" onClick={(() => toggleSeasonOptions())}>Season
+            </button>
+            {!seasonOptionsVisible && <i className="fa-thin fa-plus expand-icon"></i>}
+            {seasonOptionsVisible && <i className="fa-thin fa-minus minimize-icon"></i>}
+          </div>
           {seasonOptionsVisible && <section className="season-options">
             <div className="filter-label-and-input">
               <label htmlFor="Fall">Fall</label>
@@ -178,11 +186,15 @@ export const Closet = (): JSX.Element => {
               <input type="checkbox" id="Summer" name="Summer" value="Summer"/>
             </div>
           </section>}
-          <button className="filter-option" onClick={(() => toggleFavoriteOptions())}>Favorites
-          </button>
+           <div className="filter-icon-container">
+            <button className="filter-option" onClick={(() => toggleFavoriteOptions())}>Favorites
+            </button>
+            {!favoriteOptionsVisible && <i className="fa-thin fa-plus expand-icon"></i>}
+            {favoriteOptionsVisible && <i className="fa-thin fa-minus minimize-icon"></i>}
+          </div>
           {favoriteOptionsVisible && <section className="favorite-options">
             <div className="filter-label-and-input">
-              <label htmlFor="Favorites">Only Show Favorites</label>
+              <label htmlFor="Favorites">Only Favorites</label>
               <input type="checkbox" id="Favorites" name="Favorites" value="Favorites"/>
             </div>
           </section>}
