@@ -6,11 +6,14 @@ import GridLoader from "react-spinners/GridLoader";
 
 interface CardProps {
   id: string;
+  size: string;
   image: string;
+  color: string;
+  type: string;
   setChange: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Card = ({ id, image, setChange }: CardProps): JSX.Element => {
+export const Card = ({ id, image, setChange, size, color, type }: CardProps): JSX.Element => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -47,10 +50,15 @@ export const Card = ({ id, image, setChange }: CardProps): JSX.Element => {
         )}
         {error && <p>Could not delete item. Please try again later.</p>}
       </Link>
-      <div className="banner-container">
+      {/* <div className="banner-container">
         <p onClick={() => handleDeleteButton(id)} className="delete-banner">
           <i className="fa-light fa-trash-can"></i> Delete
         </p>
+      </div> */}
+      <div className="card-details">
+        {color && <p> {color.toUpperCase()}</p>}
+        {type && type !== "Unspecified" && <p> {type.toUpperCase()}</p>}
+        {size && <p> {size.toUpperCase()} </p>}
       </div>
     </div>
   );

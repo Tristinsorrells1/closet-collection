@@ -54,6 +54,9 @@ export const Closet = (): JSX.Element => {
         <Card
           key={item.id}
           id={item.id}
+          color={item.attributes.color}
+          type={item.attributes.clothing_type}
+          size={item.attributes.size}
           image={item.attributes.image_url}
           setChange={setChange}
         />
