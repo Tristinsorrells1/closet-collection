@@ -10,10 +10,11 @@ interface CardProps {
   image: string;
   color: string;
   type: string;
+  favorite: boolean;
   setChange: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Card = ({ id, image, setChange, size, color, type }: CardProps): JSX.Element => {
+export const Card = ({ id, image, setChange, size, color, type, favorite }: CardProps): JSX.Element => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -28,16 +29,25 @@ export const Card = ({ id, image, setChange, size, color, type }: CardProps): JS
       })
       .catch((err) => setError(err))
   };
+  
 
   return (
     <div key={id} className="card-container">
       <Link to={`/itemDetails/${id}`}>
-        <img
-          onLoad={onLoad}
-          src={image}
-          alt="Image of clothing item"
-          className="card-image"
-        />
+         <div className="image-and-favorite-container">
+            <div className="favorite-background">
+              {!favorite &&
+              <i className="fa-thin fa-heart"></i>}
+              {favorite &&
+              <i className="fa-solid fa-heart"></i>}
+            </div>
+            <img
+              className="details-image"
+              src={image}
+              alt="Image of clothing item"
+              onLoad={onLoad}
+            />
+          </div>
         {!loaded && (
           <div className="loader">
             <GridLoader

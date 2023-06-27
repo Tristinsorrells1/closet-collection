@@ -11,6 +11,7 @@ interface attributes {
   color: string;
   image_url: string;
   notes: string;
+  favorite: boolean;
 }
 
 interface Item {
@@ -61,6 +62,7 @@ export const Closet = (): JSX.Element => {
           type={item.attributes.clothing_type}
           size={item.attributes.size}
           image={item.attributes.image_url}
+          favorite={item.attributes.favorite}
           setChange={setChange}
         />
     );

@@ -20,7 +20,7 @@
   font-size: 14px;
 }
 
-.banner-container {
+/* .banner-container {
   background-color: #b8c0ff;
   border-radius: 0 0px 8px 8px;
   display: flex;
@@ -29,7 +29,7 @@
   justify-content: center;
   width: 150px;
   margin-top: -14%;
-}
+} */
 
 .loader {
   margin-bottom: 30%;

@@ -153,6 +153,8 @@ input {
 .image-and-favorite-container {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+  z-index: 2;
 }
 
 .favorite-background {
