@@ -12,6 +12,7 @@ interface Attributes {
   color: string;
   image_url: string;
   notes: string;
+  favorite: boolean;
 }
 
 interface Item {
