@@ -20,6 +20,13 @@
   /* border: 2px solid red; */
 }
 
+.no-items {
+  margin-top: 10vh;
+  color: #2a2a2a;
+  width: 50vw;
+  text-align: center;
+  font-size: 18px;
+}
 
 h2 {
   height: 5vh;
