@@ -102,7 +102,7 @@ export const List: React.FC = () => {
                 <p className="remove-item-text">Remove Item</p>
                 <i className="fa-thin fa-xmark"></i>
               </div>
-              <Card id={item.id} image={item.attributes.image_url} setChange={setChange} />
+              <Card id={item.id} size={item.attributes.size} color={item.attributes.color} favorite={item.attributes.favorite} type={item.attributes.clothing_type} image={item.attributes.image_url} setChange={setChange} />
             </div>
           ))}
       </div>
