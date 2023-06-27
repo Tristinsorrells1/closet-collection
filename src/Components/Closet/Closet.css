@@ -54,8 +54,7 @@ h2 {
 
 .error-text {
   font-size: 20px;
-  margin-left: 30%;
-  margin-top: 30%;
+  margin-top: 20vh;
 }
 
 .item-type-container {
@@ -99,6 +98,7 @@ h2 {
   background-color: #F1F1F1;
   border-radius: 0;
   text-align: center;
+  color: rgb(45, 44, 44);
 }
 
 .filter-icon-container {

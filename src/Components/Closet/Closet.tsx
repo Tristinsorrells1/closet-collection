@@ -100,9 +100,7 @@ export const Closet = (): JSX.Element => {
     setLoading(false);
   };
 
-  const toggleColorOptions = () => {
-    setColorOptionsVisible(!colorOptionsVisible)
-  }
+
 
   const toggleSeasonOptions = () => {
     setSeasonOptionsVisible(!seasonOptionsVisible)
@@ -120,7 +118,7 @@ export const Closet = (): JSX.Element => {
   return (
     <div className="closet-container">
       <div className="item-type-container">
-        <button className="item-type-button item-type-spacer">All Items</button>
+        <button className="item-type-button item-type-spacer" onClick={((event) => setType(""))}>All Items</button>
         <button className="item-type-button" onClick={((event) => setType("tops"))}>Tops</button>
         <button className="item-type-button" onClick={((event) => setType("bottoms"))}>Bottoms</button>
         <button className="item-type-button" onClick={((event) => setType("shoes"))}>Shoes</button>
@@ -129,7 +127,7 @@ export const Closet = (): JSX.Element => {
       <section className="closet-main">
         <div className="filter-options-container">
           <div className="filter-icon-container">
-            <button className="filter-option" onClick={(() => toggleColorOptions())}>Color
+            <button className="filter-option" onClick={(() => setColorOptionsVisible(!colorOptionsVisible))}>Color
             </button>
             {!colorOptionsVisible && <i className="fa-thin fa-plus expand-icon"></i>}
             {colorOptionsVisible && <i className="fa-thin fa-minus minimize-icon"></i>}
@@ -137,43 +135,64 @@ export const Closet = (): JSX.Element => {
           {colorOptionsVisible && <section className="color-options">
             <div className="filter-label-and-input">
               <label htmlFor="Red">Red</label>
-              <input type="radio" id="Red" name="color" value="red" onChange={((event) => setColor(event.target.value))} />
+              <input type="radio" id="Red" name="color" value="red" checked={(color === "red")} onChange={((event) => {
+                setColor(event.target.value) 
+                console.log(color === "red")
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Blue">Blue</label>
-              <input type="radio" id="Blue" name="color" value="blue" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="Blue" name="color" value="blue" checked={(color === "blue")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Green">Green</label>
-              <input type="radio" id="Green" name="color" value="green" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="Green" name="color" value="green" checked={(color === "green")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Purple">Purple</label>
-              <input type="radio" id="Purple" name="color" value="purple" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="Purple" name="color" value="purple" checked={(color === "purple")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Orange">Orange</label>
-              <input type="radio" id="Orange" name="color" value="orange" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="Orange" name="color" value="orange" checked={(color === "orange")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Yellow">Yellow</label>
-              <input type="radio" id="Yellow" name="color" value="yellow" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="Yellow" name="color" value="yellow" checked={(color === "yellow")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Black">Black</label>
-              <input type="radio" id="Black" name="color" value="black" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="Black" name="color" value="black" checked={(color === "black")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="White">White</label>
-              <input type="radio" id="White" name="color" value="white" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="White" name="color" value="white" checked={(color === "white")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Multi">Multi</label>
-              <input type="radio" id="Multi" name="color" value="multi" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="Multi" name="color" value="multi" checked={(color === "multi")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
           </div>
           <div className="filter-label-and-input">
               <label htmlFor="All">Show All</label>
-              <input type="radio" id="All" name="color" value="" onChange={((event) => setColor(event.target.value))}/>
+              <input type="radio" id="All" name="color" value="" checked={(color === "")} onChange={((event) => {
+                setColor(event.target.value) 
+                setColorOptionsVisible(false)})} />
           </div>
         </section>}
         <div className="filter-icon-container">
@@ -185,23 +204,23 @@ export const Closet = (): JSX.Element => {
           {seasonOptionsVisible && <section className="season-options">
             <div className="filter-label-and-input">
               <label htmlFor="Fall">Fall</label>
-              <input type="radio" id="Fall" name="season" value="fall" onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Fall" name="season" value="fall" checked={(season === "fall")} onChange={((event) => setSeason(event.target.value))}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Winter">Winter</label>
-              <input type="radio" id="Winter" name="season" value="winter" onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Winter" name="season" value="winter" checked={(season === "winter")} onChange={((event) => setSeason(event.target.value))}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Spring">Spring</label>
-              <input type="radio" id="Spring" name="season" value="spring" onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Spring" name="season" value="spring" checked={(season === "spring")} onChange={((event) => setSeason(event.target.value))}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Summer">Summer</label>
-              <input type="radio" id="Summer" name="season" value="summer" onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Summer" name="season" value="summer" checked={(season === "summer")} onChange={((event) => setSeason(event.target.value))}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="All-Seasons">All Seasons</label>
-              <input type="radio" id="Summer" name="season" value="" onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Summer" name="season" value="" checked={(season === "")} onChange={((event) => setSeason(event.target.value))}/>
             </div>
           </section>}
            <div className="filter-icon-container">
@@ -213,15 +232,16 @@ export const Closet = (): JSX.Element => {
           {favoriteOptionsVisible && <section className="favorite-options">
             <div className="filter-label-and-input">
               <label htmlFor="Favorites">Only Favorites</label>
-              <input type="radio" id="Favorites" name="Favorites" value="true" onChange={((event) => setFavorites(true))}/>
+              <input type="radio" id="Favorites" name="Favorites" value="true" checked={favorites} onChange={((event) => setFavorites(true))}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Favorites">Show All</label>
-              <input type="radio" id="Favorites" name="Favorites" value="" onChange={((event) => setFavorites(false))}/>
+              <input type="radio" id="Favorites" name="Favorites" value="" checked={!favorites} onChange={((event) => setFavorites(false))}/>
             </div>
           </section>}
         </div>
         <div className="cards-container">{mappedItems}</div>
+        {!filteredItems.length && !loading && !fetchError && <p className="error-text">No Items Found</p>}
       </section>
       {loading && (
         <div className="closet-loader">
@@ -238,7 +258,6 @@ export const Closet = (): JSX.Element => {
           Unable to get items. Please try again later."
         </p>
       )}
-      {!filteredItems.length && !loading && <p className="error-text">No Items Found</p>}
     </div>
   );
 };
