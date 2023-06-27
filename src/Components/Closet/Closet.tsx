@@ -118,7 +118,7 @@ export const Closet = (): JSX.Element => {
   return (
     <div className="closet-container">
       <div className="item-type-container">
-        <button className="item-type-button item-type-spacer">All Items</button>
+        <button className="item-type-button item-type-spacer" onClick={((event) => setType(""))}>All Items</button>
         <button className="item-type-button" onClick={((event) => setType("tops"))}>Tops</button>
         <button className="item-type-button" onClick={((event) => setType("bottoms"))}>Bottoms</button>
         <button className="item-type-button" onClick={((event) => setType("shoes"))}>Shoes</button>
@@ -241,6 +241,7 @@ export const Closet = (): JSX.Element => {
           </section>}
         </div>
         <div className="cards-container">{mappedItems}</div>
+        {!filteredItems.length && !loading && !fetchError && <p className="error-text">No Items Found</p>}
       </section>
       {loading && (
         <div className="closet-loader">
@@ -257,7 +258,6 @@ export const Closet = (): JSX.Element => {
           Unable to get items. Please try again later."
         </p>
       )}
-      {!filteredItems.length && !loading && <p className="error-text">No Items Found</p>}
     </div>
   );
 };
