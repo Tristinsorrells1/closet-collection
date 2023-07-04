@@ -11,21 +11,20 @@ interface CardProps {
   color: string;
   type: string;
   favorite: boolean;
-  setChange: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Card = ({ id, image, setChange, size, color, type, favorite }: CardProps): JSX.Element => {
+export const Card = ({ id, image, size, color, type, favorite }: CardProps): JSX.Element => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   const onLoad = (): void => setLoaded(true);
 
   const handleDeleteButton = (id: string) => {
-    setChange(true)
+    // setChange(true)
     return deleteItem(id)
       .then((data) => {
         console.log(data)
-        setChange(false)
+        // setChange(false)
       })
       .catch((err) => setError(err))
   };
