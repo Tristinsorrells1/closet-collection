@@ -171,24 +171,54 @@ input {
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 450px) {
   .details-image {
-    height: 40vh;
-    width: 40vw;
+    width: 44vw;
   }
 
   .favorite-background {
-    width: 40vw;
+    width: 44vw;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 550px) {
   .details-image {
-    height: 45vh;
+    width: 42vw;
+  }
+
+  .favorite-background {
+    width: 42vw;
+  }
+}
+
+@media (min-width: 630px) {
+  .details-image {
     width: 30vw;
   }
 
   .favorite-background {
     width: 30vw;
+  }
+}
+
+@media (min-width: 1020px) {
+  .details-image {
+    width: 26vw;
+    height: 40vh;
+  }
+
+  .favorite-background {
+    width: 26vw;
+  }
+}
+
+@media (min-width: 1330px) {
+  .details-image {
+    width: 20vw;
+    height: 40vh;
+  }
+
+  .favorite-background {
+    width: 20vw;
   }
 }

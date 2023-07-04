@@ -159,3 +159,20 @@ label {
   justify-content: space-evenly;
   font-size: 14px;
 }
+
+@media (min-width: 460px) {
+  .item-count-text {
+    margin-left: 85%;
+  }
+}
+
+@media (min-width: 500px) {
+  .details-image {
+    height: 40vh;
+    width: 40vw;
+  }
+
+  .favorite-background {
+    width: 40vw;
+  }
+}
