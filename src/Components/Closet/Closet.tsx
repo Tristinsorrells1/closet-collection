@@ -1,6 +1,6 @@
 import { Card } from "../Card/Card";
 import "./Closet.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { filterItems, getAllItems } from "../../apiCall";
 import GridLoader from "react-spinners/GridLoader";
 
@@ -25,7 +25,6 @@ export const Closet = (): JSX.Element => {
   const [filteredItems, setFilteredItems] = useState<Item[]>([]);
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-  const [change, setChange] = useState<boolean>(false);
   const [colorOptionsVisible, setColorOptionsVisible] = useState<boolean>(false);
   const [seasonOptionsVisible, setSeasonOptionsVisible] = useState<boolean>(false);
   const [favoriteOptionsVisible, setFavoriteOptionsVisible] = useState<boolean>(false);
@@ -50,7 +49,7 @@ export const Closet = (): JSX.Element => {
         setFilteredItems([]);
         setLoading(false);
       });
-  }, [change]);
+  }, []);
  
   
   const mappedItems = filteredItems.map((item: Item): JSX.Element => {
@@ -63,22 +62,18 @@ export const Closet = (): JSX.Element => {
           size={item.attributes.size}
           image={item.attributes.image_url}
           favorite={item.attributes.favorite}
-          setChange={setChange}
         />
     );
   });
 
-
-
   const handleFilter = async (): Promise<void> => {
-
     const queries = [
       { name: "season", value: season},
       { name: "clothing_type", value: type },
       { name: "color", value: color},
       { name: "favorite", value: favorites},
-      
     ];
+
     const truthyQueries = queries.filter(({ value }) => value);
     
     const queriesString = truthyQueries
@@ -86,7 +81,6 @@ export const Closet = (): JSX.Element => {
       .join("&");
 
     const url = `https://closet-manager-be.herokuapp.com/api/v1/users/1/items/find_all?${queriesString}`;
-    setLoading(true);
     filterItems(url)
       .then((response) => {
         setFilteredItems(response.data);
@@ -100,17 +94,8 @@ export const Closet = (): JSX.Element => {
     setLoading(false);
   };
 
-
-
-  const toggleSeasonOptions = () => {
-    setSeasonOptionsVisible(!seasonOptionsVisible)
-  }
-
-  const toggleFavoriteOptions = () => {
-    setFavoriteOptionsVisible(!favoriteOptionsVisible)
-  }
-
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setLoading(true)
     handleFilter()
   }, [color, season, type, favorites])
 
@@ -118,12 +103,13 @@ export const Closet = (): JSX.Element => {
   return (
     <div className="closet-container">
       <div className="item-type-container">
-        <button className="item-type-button item-type-spacer" onClick={((event) => setType(""))}>All Items</button>
-        <button className="item-type-button" onClick={((event) => setType("tops"))}>Tops</button>
-        <button className="item-type-button" onClick={((event) => setType("bottoms"))}>Bottoms</button>
-        <button className="item-type-button" onClick={((event) => setType("shoes"))}>Shoes</button>
-        <button className="item-type-button" onClick={((event) => setType("accessories"))}>Accessories</button>
+        <button className="item-type-button item-type-spacer" onClick={(() => setType(""))}>All Items</button>
+        <button className="item-type-button" onClick={(() => setType("tops"))}>Tops</button>
+        <button className="item-type-button" onClick={(() => setType("bottoms"))}>Bottoms</button>
+        <button className="item-type-button" onClick={(() => setType("shoes"))}>Shoes</button>
+        <button className="item-type-button" onClick={(() => setType("accessories"))}>Accessories</button>
       </div>
+      {filteredItems.length !==0 && !fetchError && <p className="item-count-text"> {filteredItems.length} Items</p>}
       <section className="closet-main">
         <div className="filter-options-container">
           <div className="filter-icon-container">
@@ -137,7 +123,6 @@ export const Closet = (): JSX.Element => {
               <label htmlFor="Red">Red</label>
               <input type="radio" id="Red" name="color" value="red" checked={(color === "red")} onChange={((event) => {
                 setColor(event.target.value) 
-                console.log(color === "red")
                 setColorOptionsVisible(false)})} />
             </div>
             <div className="filter-label-and-input">
@@ -196,7 +181,7 @@ export const Closet = (): JSX.Element => {
           </div>
         </section>}
         <div className="filter-icon-container">
-            <button className="filter-option" onClick={(() => toggleSeasonOptions())}>Season
+            <button className="filter-option" onClick={(() => setSeasonOptionsVisible(!seasonOptionsVisible))}>Season
             </button>
             {!seasonOptionsVisible && <i className="fa-thin fa-plus expand-icon"></i>}
             {seasonOptionsVisible && <i className="fa-thin fa-minus minimize-icon"></i>}
@@ -204,27 +189,37 @@ export const Closet = (): JSX.Element => {
           {seasonOptionsVisible && <section className="season-options">
             <div className="filter-label-and-input">
               <label htmlFor="Fall">Fall</label>
-              <input type="radio" id="Fall" name="season" value="fall" checked={(season === "fall")} onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Fall" name="season" value="fall" checked={(season === "fall")}  onChange={(() => {
+              setSeason("fall")
+              setSeasonOptionsVisible(!seasonOptionsVisible)})}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Winter">Winter</label>
-              <input type="radio" id="Winter" name="season" value="winter" checked={(season === "winter")} onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Winter" name="season" value="winter" checked={(season === "winter")} onChange={(() => {
+              setSeason("winter")
+              setSeasonOptionsVisible(!seasonOptionsVisible)})}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Spring">Spring</label>
-              <input type="radio" id="Spring" name="season" value="spring" checked={(season === "spring")} onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Spring" name="season" value="spring" checked={(season === "spring")} onChange={(() => {
+              setSeason("spring")
+              setSeasonOptionsVisible(!seasonOptionsVisible)})}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Summer">Summer</label>
-              <input type="radio" id="Summer" name="season" value="summer" checked={(season === "summer")} onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Summer" name="season" value="summer" checked={(season === "summer")} onChange={(() => {
+              setSeason("summer")
+              setSeasonOptionsVisible(!seasonOptionsVisible)})}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="All-Seasons">All Seasons</label>
-              <input type="radio" id="Summer" name="season" value="" checked={(season === "")} onChange={((event) => setSeason(event.target.value))}/>
+              <input type="radio" id="Summer" name="season" value="" checked={(season === "")} onChange={(() => {
+              setSeason("")
+              setSeasonOptionsVisible(!seasonOptionsVisible)})}/>
             </div>
           </section>}
            <div className="filter-icon-container">
-            <button className="filter-option" onClick={(() => toggleFavoriteOptions())}>Favorites
+            <button className="filter-option" onClick={(() => setFavoriteOptionsVisible(!favoriteOptionsVisible))}>Favorites
             </button>
             {!favoriteOptionsVisible && <i className="fa-thin fa-plus expand-icon"></i>}
             {favoriteOptionsVisible && <i className="fa-thin fa-minus minimize-icon"></i>}
@@ -232,16 +227,27 @@ export const Closet = (): JSX.Element => {
           {favoriteOptionsVisible && <section className="favorite-options">
             <div className="filter-label-and-input">
               <label htmlFor="Favorites">Only Favorites</label>
-              <input type="radio" id="Favorites" name="Favorites" value="true" checked={favorites} onChange={((event) => setFavorites(true))}/>
+              <input type="radio" id="Favorites" name="Favorites" value="true" checked={favorites} onChange={(() => {
+                setFavoriteOptionsVisible(false)
+                setFavorites(true)})}/>
             </div>
             <div className="filter-label-and-input">
               <label htmlFor="Favorites">Show All</label>
-              <input type="radio" id="Favorites" name="Favorites" value="" checked={!favorites} onChange={((event) => setFavorites(false))}/>
+              <input type="radio" id="Favorites" name="Favorites" value="" checked={!favorites} onChange={(() => {
+                setFavoriteOptionsVisible(false)
+                setFavorites(false)})}/>
             </div>
           </section>}
+            <button className="clear-filters-button" onClick={(() => {
+                setColor("")
+                setType("")
+                setSeason("")
+                setFavorites(false)})}>Clear Filters</button>
         </div>
-        <div className="cards-container">{mappedItems}</div>
-        {!filteredItems.length && !loading && !fetchError && <p className="error-text">No Items Found</p>}
+        <div className="cards-container">
+          {filteredItems.length ===0 && !fetchError && <p className="no-item-text"> {filteredItems.length} Items</p>}
+          {mappedItems}
+        </div>
       </section>
       {loading && (
         <div className="closet-loader">
