@@ -51,8 +51,9 @@
   border: 1px solid rgb(45, 44, 44);
   color: rgb(45, 44, 44);
   width: 30vw;
-  max-width: 190px;
-  margin: 15px 2.5vw 2px 2.5vw;
+  max-width: 150px;
+  margin: 15px auto 2px auto;
+  display: block;
   height: 5.5vh;
   padding: 0;
   text-align: top;
@@ -118,11 +119,10 @@
 .filter-icon-container {
   display: flex;
   height: 6vh;
-  align-items: baseline;
+  align-items: center;
   padding: 0;
   margin: 0;
   border-bottom: 1px solid grey;
-  max-width: 250px;
 }
 
 .expand-icon,
@@ -137,6 +137,8 @@
   align-items: center;
   justify-content: center;
   padding: 15px 15px 15px 3vw;
+  max-width: 100px;
+  border: 2px solid red;
 }
 
 label {
@@ -160,6 +162,12 @@ label {
   width: 100%;
   justify-content: space-evenly;
   font-size: 14px;
+}
+
+@media (min-width: 370px) {
+  .filter-label-and-input {
+      padding: 7px 7px 7px 1.5vw;
+    }
 }
 
 @media (min-width: 460px) {
@@ -189,4 +197,5 @@ label {
     width: 40vw;
   }
 }
+
 
