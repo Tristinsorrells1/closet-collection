@@ -28,7 +28,6 @@ type IdParams = {
 export const List: React.FC = () => {
   const [listDetails, setListDetails] = useState<Item[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [change, setChange] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
   const { id } = useParams<IdParams>();
@@ -55,7 +54,7 @@ export const List: React.FC = () => {
 
   useEffect(() => {
     fetchListDetails();
-  }, [change]);
+  }, []);
 
   const handleBack = (): void => {
     navigate("/lists");
@@ -73,8 +72,6 @@ export const List: React.FC = () => {
       if (!response.ok) {
         throw new Error("Failed to delete item");
       }
-
-      setChange(!change);
     } catch (error) {
       setError("An error occurred while deleting the item.");
     }
@@ -102,7 +99,7 @@ export const List: React.FC = () => {
                 <p className="remove-item-text">Remove Item</p>
                 <i className="fa-thin fa-xmark"></i>
               </div>
-              <Card id={item.id} size={item.attributes.size} color={item.attributes.color} favorite={item.attributes.favorite} type={item.attributes.clothing_type} image={item.attributes.image_url} setChange={setChange} />
+              <Card id={item.id} size={item.attributes.size} color={item.attributes.color} favorite={item.attributes.favorite} type={item.attributes.clothing_type} image={item.attributes.image_url}  />
             </div>
           ))}
       </div>
