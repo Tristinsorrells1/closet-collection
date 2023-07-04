@@ -30,7 +30,7 @@ export const Closet = (): JSX.Element => {
   const [favoriteOptionsVisible, setFavoriteOptionsVisible] = useState<boolean>(false);
   const [color, setColor] = useState<string>("")
   const [season, setSeason] = useState<string>("")
-   const [type, setType] = useState<string>("")
+  const [type, setType] = useState<string>("")
   const [favorites, setFavorites] = useState<boolean>(false);
 
 
@@ -246,6 +246,8 @@ export const Closet = (): JSX.Element => {
         </div>
         <div className="cards-container">
           {filteredItems.length ===0 && !fetchError && <p className="no-item-text"> {filteredItems.length} Items</p>}
+          {fetchError && (<p className="fetch-error-text">Unable to get items. Please try again later.</p>
+      )}
           {mappedItems}
         </div>
       </section>
@@ -258,11 +260,6 @@ export const Closet = (): JSX.Element => {
             data-testid="loader"
           />
         </div>
-      )}
-      {fetchError && (
-        <p className="fetch-error-text">
-          Unable to get items. Please try again later."
-        </p>
       )}
     </div>
   );

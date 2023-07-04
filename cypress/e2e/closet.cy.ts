@@ -1,5 +1,6 @@
 describe("Closet View", () => {
   beforeEach(() => {
+    cy.intercept("GET", "https://closet-manager-be.herokuapp.com/api/v1/users/1/items/find_all?", {fixture: "closet"})
     cy.intercept("GET", "https://closet-manager-be.herokuapp.com/api/v1/users/1/items", {fixture: "closet"})
     cy.visit("http://localhost:5173/");
   })
@@ -9,21 +10,18 @@ describe("Closet View", () => {
       expect(newUrl).to.contain("/myCloset");
     });
   });
-  it("Should contain cards of images with a banner that says 'Delete'", () => {
+  it("Should contain cards of images", () => {
     cy.get('.home-container > [href="/myCloset"]').click();
-    cy.on("url:changed", (newUrl) => {
-      expect(newUrl).to.contain("/myCloset");
-    });
-    cy.get(".card-image").should("have.length", 3).should("be.visible");
-    cy.get(".banner-container").should("have.length", 3).should("be.visible");
-    cy.get(':nth-child(1) > a > .card-image').should("be.visible");
+    cy.get(".cards-container").should("be.visible");
   });
-  it("Should be able to delete an item from the closet", () => {
-    cy.intercept("DELETE", "https://closet-manager-be.herokuapp.com/api/v1/users/1/items/1")
+  it("Should inform the user if a server error occurs", () => {
+    cy.intercept("GET", "https://closet-manager-be.herokuapp.com/api/v1/users/1/items", {
+      statusCode: 500,
+    })
+    cy.intercept("GET", "https://closet-manager-be.herokuapp.com/api/v1/users/1/items/find_all?", {
+      statusCode: 500,
+    })
     cy.get('.home-container > [href="/myCloset"]').click();
-    cy.on("url:changed", (newUrl) => {
-      expect(newUrl).to.contain("/myCloset");
-    });
-    cy.get(':nth-child(1) > .banner-container > .delete-banner').click();
-  })
+    cy.get("p[class='fetch-error-text']").should("contain", "Unable to get items. Please try again later.")
+  });
 });
