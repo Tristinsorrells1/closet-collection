@@ -65,9 +65,9 @@ export const Card = ({ id, image, size, color, type, favorite }: CardProps): JSX
         </p>
       </div> */}
       <div className="card-details">
-        {color && <p> {color.toUpperCase()}</p>}
-        {type && type !== "Unspecified" && <p> {type.toUpperCase()}</p>}
-        {size && <p> {size.toUpperCase()} </p>}
+        {color && <p className="closet-item-detail"> {color.toUpperCase()}</p>}
+        {type && type !== "Unspecified" && <p className="closet-item-detail"> {type.toUpperCase()}</p>}
+        {size && <p className="closet-item-detail"> {size.toUpperCase()} </p>}
       </div>
     </div>
   );

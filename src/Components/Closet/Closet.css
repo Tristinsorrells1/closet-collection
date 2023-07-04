@@ -4,12 +4,6 @@
   margin-top: 10vh;
 }
 
-#filter {
-  background-color: #bbd0ff;
-  margin: 8px 0 2px 0;
-  width: 100%;
-}
-
 .cards-container {
   align-content: space-around;
   display: flex;
@@ -17,7 +11,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
   height: fit-content;
-  /* border: 2px solid red; */
 }
 
 .no-items {
@@ -33,7 +26,8 @@
   margin-top: 5px;
 }
 
-.no-item-text {
+.no-item-text,
+.fetch-error-text {
   height: 50vh;
   margin-left: 10vw;
   width: 50vw;
@@ -43,25 +37,28 @@
 }
 
 .item-count-text,
-.no-item-text {
+.no-item-text,
+.fetch-error-text {
   display: block;
   color: rgb(92, 90, 90);
 }
 
+.closet-item-detail {
+  margin-top: 4px;
+}
+
 .clear-filters-button {
-  border: 1px solid black;
+  border: 1px solid rgb(45, 44, 44);
+  color: rgb(45, 44, 44);
   width: 30vw;
-  margin: 15px 2.5vw 2px 2.5vw;
+  max-width: 150px;
+  margin: 15px auto 2px auto;
+  display: block;
   height: 5.5vh;
   padding: 0;
   text-align: top;
   font-size: 15px;
   background-image: linear-gradient(to right, #e7c0f4 0%, #c7d4ea 51%, #bba8f4 100%);
-}
-
-h2 {
-  height: 5vh;
-  text-align: center;
 }
 
 .filter-button {
@@ -70,29 +67,9 @@ h2 {
   color: #2a2a2a;
 }
 
-#filter--clothing-type,
-#filter--color,
-#filter--season,
-#filter--favorite {
-  background-color: #bbd0ff;
-  color: #2a2a2a;
-  cursor: pointer;
-  text-align: center;
-  align-items: center;
-  padding: 2px 0 2px 0;
-  font-size: 12px;
-  width: 25%;
-  border: .25px solid rgb(135, 132, 132);
-}
-
 .closet-loader {
   margin-left: 35%;
   margin-top: 30%;
-}
-
-.error-text {
-  font-size: 20px;
-  margin-top: 20vh;
 }
 
 .item-type-container {
@@ -142,7 +119,7 @@ h2 {
 .filter-icon-container {
   display: flex;
   height: 6vh;
-  align-items: baseline;
+  align-items: center;
   padding: 0;
   margin: 0;
   border-bottom: 1px solid grey;
@@ -160,13 +137,14 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 15px 15px 15px 3vw;
+  max-width: 100px;
+  border: 2px solid red;
 }
 
 label {
   width: 100vw;
   display: block;
 }
-
 
 .closet-main {
   display: flex;
@@ -185,3 +163,39 @@ label {
   justify-content: space-evenly;
   font-size: 14px;
 }
+
+@media (min-width: 370px) {
+  .filter-label-and-input {
+      padding: 7px 7px 7px 1.5vw;
+    }
+}
+
+@media (min-width: 460px) {
+  .item-count-text {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
+  .item-type-container {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 475px) {
+  .item-type-container {
+      justify-content: flex-end;
+    }
+}
+
+@media (min-width: 500px) {
+  .details-image {
+    height: 40vh;
+    width: 40vw;
+  }
+
+  .favorite-background {
+    width: 40vw;
+  }
+}
+
+

@@ -171,24 +171,35 @@ input {
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 530px) {
   .details-image {
-    height: 40vh;
-    width: 40vw;
+    width: 32vw;
+    height: 30vh;
   }
 
   .favorite-background {
-    width: 40vw;
+    width: 32vw;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 880px) {
   .details-image {
-    height: 45vh;
-    width: 30vw;
+    width: 20vw;
   }
 
   .favorite-background {
-    width: 30vw;
+    width: 20vw;
+  }
+}
+
+
+@media (min-width: 1130px) {
+  .details-image {
+    width: 18vw;
+    height: 38vh;
+  }
+
+  .favorite-background {
+    width: 18vw;
   }
 }
