@@ -109,6 +109,7 @@ export const Closet = (): JSX.Element => {
         <button className="item-type-button" onClick={(() => setType("shoes"))}>Shoes</button>
         <button className="item-type-button" onClick={(() => setType("accessories"))}>Accessories</button>
       </div>
+      {filteredItems.length !==0 && !fetchError && <p className="item-count-text"> {filteredItems.length} Items</p>}
       <section className="closet-main">
         <div className="filter-options-container">
           <div className="filter-icon-container">
@@ -237,17 +238,16 @@ export const Closet = (): JSX.Element => {
                 setFavorites(false)})}/>
             </div>
           </section>}
-        </div>
-        <div className="cards-container">
-          {mappedItems}
-        </div>
-          {!filteredItems.length && <p className="no-items"> 0 Items</p>}
-          {!filteredItems.length && <button onClick={(() => {
+            <button className="clear-filters-button" onClick={(() => {
                 setColor("")
                 setType("")
                 setSeason("")
-                setFavorites(false)})}
-                >Clear Filters</button>}
+                setFavorites(false)})}>Clear Filters</button>
+        </div>
+        <div className="cards-container">
+          {filteredItems.length ===0 && !fetchError && <p className="no-item-text"> {filteredItems.length} Items</p>}
+          {mappedItems}
+        </div>
       </section>
       {loading && (
         <div className="closet-loader">
