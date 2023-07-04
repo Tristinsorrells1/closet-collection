@@ -1,6 +1,6 @@
 import { Card } from "../Card/Card";
 import "./Closet.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { filterItems, getAllItems } from "../../apiCall";
 import GridLoader from "react-spinners/GridLoader";
 
@@ -25,7 +25,6 @@ export const Closet = (): JSX.Element => {
   const [filteredItems, setFilteredItems] = useState<Item[]>([]);
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-  const [change, setChange] = useState<boolean>(false);
   const [colorOptionsVisible, setColorOptionsVisible] = useState<boolean>(false);
   const [seasonOptionsVisible, setSeasonOptionsVisible] = useState<boolean>(false);
   const [favoriteOptionsVisible, setFavoriteOptionsVisible] = useState<boolean>(false);
@@ -50,7 +49,7 @@ export const Closet = (): JSX.Element => {
         setFilteredItems([]);
         setLoading(false);
       });
-  }, [change]);
+  }, []);
  
   
   const mappedItems = filteredItems.map((item: Item): JSX.Element => {
@@ -63,7 +62,6 @@ export const Closet = (): JSX.Element => {
           size={item.attributes.size}
           image={item.attributes.image_url}
           favorite={item.attributes.favorite}
-          setChange={setChange}
         />
     );
   });
@@ -83,7 +81,6 @@ export const Closet = (): JSX.Element => {
       .join("&");
 
     const url = `https://closet-manager-be.herokuapp.com/api/v1/users/1/items/find_all?${queriesString}`;
-    setLoading(true);
     filterItems(url)
       .then((response) => {
         setFilteredItems(response.data);
@@ -97,9 +94,10 @@ export const Closet = (): JSX.Element => {
     setLoading(false);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setLoading(true)
     handleFilter()
-  }, [color, season, type, favorites, filteredItems])
+  }, [color, season, type, favorites])
 
 
   return (
