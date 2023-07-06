@@ -3,20 +3,14 @@
   color: #2a2a2a;
   display: flex;
   flex-direction: column;
-  height: 73vh;
+  height: 100vh;
   justify-content: flex-start;
   padding: 0;
   width: 100%;
-  margin: 0 auto 0 auto;
+  margin: 10vh auto 0 auto;
+  border: 2px solid blue;
 }
 
-.item-details-container {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 3vw;
-}
 
 .item-details {
   background-color: #b8c0ff;
@@ -108,26 +102,21 @@
 }
 
 .add-to-list-container {
-  align-items: center;
+  border: 2px solid red;
+  text-align: center;
+  height: 100%;
+}
+
+.list-input-container {
   display: flex;
-  flex-direction: row;
-  margin: 1vw;
+  width: 40vw;
+  border: 2px solid green;
+  margin: auto;
 }
 
 .edit-delete-container {
   width: 65vw;
   display: flex;
-  margin-bottom: 15vh;
-}
-
-.cal {
-  text-align: center;
-  width: 70vw;
-  padding: 0;
-}
-
-.cal-text {
-  margin-top: 8px;
 }
 
 input {
@@ -157,8 +146,21 @@ input {
   z-index: 2;
 }
 
-.favorite-background {
-  width: 60vw;
+.toggle-icons {
+  width: 50%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid red;
+}
+
+.toggle-icon {
+  font-size: 30px;
+  margin: 0 10px 0px 10px;
+}
+
+.favorite-background,
+.item-favorite-background {
   margin-top: -5%;
   height: 4vh;
   z-index: 2;
@@ -192,7 +194,6 @@ input {
   }
 }
 
-
 @media (min-width: 1130px) {
   .details-image {
     width: 18vw;
@@ -202,4 +203,9 @@ input {
   .favorite-background {
     width: 18vw;
   }
+}
+
+.item-details-image {
+  height: 32vh;
+  width: 72vw;
 }

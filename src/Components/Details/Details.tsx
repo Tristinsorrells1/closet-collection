@@ -1,5 +1,5 @@
 import "./Details.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getSingleItem, deleteItem } from "../../apiCall";
 import { singleItemCleaning } from "../../util";
@@ -36,10 +36,14 @@ export const Details = (): JSX.Element => {
   const navigate = useNavigate();
   const [item, setItem] = useState<Item | undefined>();
   const [fetchError, setFetchError] = useState<boolean>(false);
+  const [toggleCal, setToggleCal] = useState<boolean>(false);
+  const [toggleList, setToggleList] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
   const [lists, setLists] = useState<List[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedList, setSelectedList] = useState<string | any>("")
+
 
   const fetchLists = async () => {
     try {
@@ -96,12 +100,14 @@ export const Details = (): JSX.Element => {
   };
 
   const handleAddToList = async () => {
-    const select = document.getElementById("list-dropdown") as HTMLSelectElement;
-    const listId = parseInt(select.value);
+   
+    setToggleList(false)
+    console.log(selectedList)
+    const listId = parseInt(selectedList);
     if (!listId) {
       return;
     }
-  
+   
     try {
       const response = await fetch(
         `https://closet-manager-be.herokuapp.com/api/v1/items/${id}/lists/${listId}/list_items`,
@@ -120,10 +126,7 @@ export const Details = (): JSX.Element => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      else {
-        const button = document.querySelector(".add-button") as HTMLSelectElement;
-        button.innerText = "Added!"
-      }
+
     } catch (error) {
       console.error(error);
       setError("An error occurred while adding to lists.");
@@ -134,10 +137,7 @@ export const Details = (): JSX.Element => {
     fetchLists();
   }, []);
 
-  const setCalText = (status: string) => {
-    const calText = document.querySelector(".cal-text") as HTMLElement;
-    calText.innerText = status
-  }
+
   const handleFavoriteIcon = async () => {
     try {
       const res = await fetch(`https://closet-manager-be.herokuapp.com/api/v1/users/1/items/${id}`, {
@@ -173,6 +173,59 @@ export const Details = (): JSX.Element => {
         </>
       )}
       {item && (
+        <div className="image-and-favorite-container">
+          <div className="item-favorite-background">
+            {!item.attributes.favorite &&
+            <i className="fa-thin fa-heart" onClick={(() => handleFavoriteIcon())}></i>}
+            {item.attributes.favorite &&
+            <i className="fa-solid fa-heart" onClick={(() => handleFavoriteIcon())}></i>}
+          </div>
+          <img
+            className="item-details-image"
+            src={item.attributes.image_url}
+            alt="Image of clothing item"
+          />
+        </div>
+        
+      )}
+      <div className="toggle-icons">
+        <i className="fa-duotone fa-calendar-days toggle-icon" onClick={(() => setToggleCal(!toggleCal))}></i>
+        <i className="fa-light fa-list toggle-icon" onClick={(() => setToggleList(!toggleList))}></i>
+      </div>
+      {toggleCal && <Calendar id={id} />}
+          {toggleList &&  <div className="add-to-list-container">
+              <form id="lists" name="lists" onSubmit={handleAddToList}></form>
+              <label htmlFor="lists">Select a List:</label>
+              {lists.map((list) => (
+                <div className="list-input-container" key={list.id}>
+                 <label htmlFor="list">{list.name}</label>
+                  <input type="radio" onChange={(() => setSelectedList(list.id))} id={list.id} name="list" key={list.id} ></input>
+                </div>
+              ))}
+            <button onClick={handleAddToList} type="submit">Add to List</button>
+          </div> }
+      {item && item.attributes.notes && (
+        <div className="notes-container">
+          <h2 className="item-notes-header">Notes</h2>
+          <p className="item-notes">{item.attributes.notes}</p>
+        </div>
+      )}
+      {!loading && !isDeleted && (
+        <section className="details-button-container"> 
+          <div className="edit-delete-container">
+            <NavLink to={`/edit/${id}`} className="edit-link">
+              <button className="details-edit-button">Edit</button>
+            </NavLink>
+            <button
+              className="details-delete-button"
+              onClick={() => handleDelete(id!)}
+            >
+              Delete
+            </button>
+          </div>
+        </section>
+      )}
+       {item && (
         <div className="item-details-container">
           {item.attributes.color && (
             <NavLink to={`/edit/${id}`} className="item-link">
@@ -193,59 +246,6 @@ export const Details = (): JSX.Element => {
             </NavLink>
           )}
         </div>
-      )}
-      {item && (
-        <div className="image-and-favorite-container">
-          <div className="favorite-background">
-            {!item.attributes.favorite &&
-            <i className="fa-thin fa-heart" onClick={(() => handleFavoriteIcon())}></i>}
-            {item.attributes.favorite &&
-            <i className="fa-solid fa-heart" onClick={(() => handleFavoriteIcon())}></i>}
-          </div>
-          <img
-            className="details-image"
-            src={item.attributes.image_url}
-            alt="Image of clothing item"
-          />
-        </div>
-        
-      )}
-      {item && 
-      <div className="cal" onClick={() => setCalText("Add to Calendar")}>
-        <p className="cal-text">Add to Calendar:</p>
-        <Calendar id={id} setCalText={setCalText}/>
-      </div>}
-      {item && item.attributes.notes && (
-        <div className="notes-container">
-          <h2 className="item-notes-header">Notes</h2>
-          <p className="item-notes">{item.attributes.notes}</p>
-        </div>
-      )}
-      {!loading && !isDeleted && (
-        <section className="details-button-container">
-          <div className="add-to-list-container">
-            <select id="list-dropdown" className="details-list-dropdown">
-              <option value="">Select a list</option>
-              {lists.map((list) => (
-                <option key={list.id} value={list.id}>
-                  {list.name}
-                </option>
-              ))}
-            </select>
-            <button className="add-button" onClick={handleAddToList}>Add to List</button>
-          </div>  
-          <div className="edit-delete-container">
-            <NavLink to={`/edit/${id}`} className="edit-link">
-              <button className="details-edit-button">Edit</button>
-            </NavLink>
-            <button
-              className="details-delete-button"
-              onClick={() => handleDelete(id!)}
-            >
-              Delete
-            </button>
-          </div>
-        </section>
       )}
     </section>
   );

@@ -3,17 +3,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { addToCalendar } from "../../apiCall";
 
-export const Calendar = ({ id, setCalText }) => {
+export const Calendar = ({ id }) => {
   const [startDate, setStartDate] = useState(new Date());
 
   const getDate = (date) => {
     addToCalendar(date.toISOString().slice(0, 10), id)
    .then((res) => {
       if (res.ok) {
-        setCalText("Added to Calendar!")
+        //
       }
       else {
-        setCalText("Error - Unable to Add to Calendar")
+       //
       }
    })
   }
@@ -22,8 +22,9 @@ export const Calendar = ({ id, setCalText }) => {
     <DatePicker
       showMonthDropdown
       showYearDropdown
-      dropdownMode="select"
-      showIcon
+      // dropdownMode="select"
+      selectsRange
+      inline
       popperProps={{strategy: 'absolute'}} 
       popperModifiers={[
         {

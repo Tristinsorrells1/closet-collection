@@ -245,7 +245,7 @@ export const Closet = (): JSX.Element => {
                 setFavorites(false)})}>Clear Filters</button>
         </div>
         <div className="cards-container">
-          {filteredItems.length ===0 && !fetchError && <p className="no-item-text"> {filteredItems.length} Items</p>}
+          {filteredItems.length ===0 && !fetchError && !loading && <p className="no-item-text"> 0 Items</p>}
           {fetchError && (<p className="fetch-error-text">Unable to get items. Please try again later.</p>
       )}
           {mappedItems}
