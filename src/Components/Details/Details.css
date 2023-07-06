@@ -89,6 +89,7 @@ a:link {
 
 .list-input-container {
   display: flex;
+  justify-content: space-between;
   width: 42vw;
   border: 1px solid rgb(45, 44, 44);
   margin: 10px auto 10px auto;
