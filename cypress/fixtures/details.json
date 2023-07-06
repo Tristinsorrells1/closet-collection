@@ -1,15 +1,15 @@
 {
     "data": {
-        "id": "12",
-        "type": "item",
-        "attributes": {
-            "user_id": 1,
-            "season": "summer",
-            "clothing_type": "tops",
-            "color": "orange",
-            "size": "small",
-            "image_url": "https://closet-manager-be.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f992d19ee8a075a2504c274ce72a7b33b98e7851/orange-top.avif",
-            "notes": "Wash on cold only"
-        }
+      "id": 1,
+      "type": "item",
+      "attributes": {
+        "user_id": 1,
+        "season": "fall",
+        "clothing_type": "other",
+        "size": "Large",
+        "color": "red",
+        "image_url": "../red-top.avif",
+        "notes": "Hand wash only"
+      }
     }
 }
