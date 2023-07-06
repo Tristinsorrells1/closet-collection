@@ -174,7 +174,7 @@ export const Details = (): JSX.Element => {
         </>
       )}
       {item && (
-        <div className="image-and-favorite-container">
+        <div className="image-and-favorite-container image-and-favorite-container-details ">
           <div className="item-favorite-background">
             {!item.attributes.favorite &&
             <i className="fa-thin fa-heart" onClick={(() => handleFavoriteIcon())}></i>}
