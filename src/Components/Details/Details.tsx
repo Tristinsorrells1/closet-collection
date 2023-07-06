@@ -190,10 +190,10 @@ export const Details = (): JSX.Element => {
         
       )}
       <div className="toggle-icons">
-        <i className="fa-duotone fa-calendar-days toggle-icon" onClick={(() => {
+        {/* <i className="fa-duotone fa-calendar-days toggle-icon" onClick={(() => {
           setToggleDelete(false)
           setToggleList(false)
-          setToggleCal(!toggleCal)})}></i>
+          setToggleCal(!toggleCal)})}></i> */}
         <i className="fa-light fa-list toggle-icon"onClick={(() => {
           setToggleDelete(false)
           setToggleList(!toggleList)
@@ -241,7 +241,7 @@ export const Details = (): JSX.Element => {
               <p className="item-details">{item.attributes.color}</p>
             </NavLink>
           )}
-          {item.attributes.clothing_type && (
+          {item.attributes.clothing_type && item.attributes.clothing_type !== "other" && (
             <NavLink to={`/edit/${id}`} className="item-link">
               <p className="item-details">{item.attributes.clothing_type}</p>
             </NavLink>

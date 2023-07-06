@@ -74,7 +74,7 @@ a:link {
 }
 
 .add-to-list-container {
-  margin: 8px auto 25px auto;
+  margin: 15px auto 25px auto;
   padding: 8px;
   border: 1px solid rgb(45, 44, 44);
   width: 80vw;
@@ -161,7 +161,8 @@ a:link {
   border: 1px solid rgb(45, 44, 44);
   text-align: center;
   height: 20vh;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 25px;
   width: 80vw;
   display: flex;
   flex-direction: column;
@@ -169,10 +170,13 @@ a:link {
   background-color: rgb(221, 221, 238);
 }
 
-
-.close-delete-toggle,
 .close-list-toggle {
   margin-left: 90%;
+  font-size: 20px;
+}
+
+.close-delete-toggle {
+  margin-left: 80%;
   font-size: 20px;
 }
 
@@ -202,6 +206,18 @@ a:link {
 .details-delete-button {
   background-color: rgba(241, 125, 125, 0.69);
   border: 1px solid rgb(234, 73, 73);
+}
+
+.item-details-image {
+  height: 48vh;
+  width: auto;
+}
+
+@media (min-width: 360px) {
+  .item-details-image {
+    height: 55vh;
+    width: 72vw;
+  }
 }
 
 @media (min-width: 530px) {
@@ -234,9 +250,4 @@ a:link {
   .favorite-background {
     width: 18vw;
   }
-}
-
-.item-details-image {
-  height: 45vh;
-  width: 77vw;
 }
