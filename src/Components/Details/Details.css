@@ -3,27 +3,27 @@
   color: #2a2a2a;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: flex-start;
   padding: 0;
   width: 100%;
   margin: 10vh auto 0 auto;
-  border: 2px solid blue;
 }
 
 
 .item-details {
-  background-color: #b8c0ff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: black;
-  font-size: 14px;
-  height: 2.5vh;
-  margin: 2px;
-  padding: 3px;
+  color: #2a2a2a;
   text-align: center;
   text-transform: uppercase;
+  margin: 5px;
+  background-color: rgb(221, 221, 238);
   width: 38vw;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.item-details-container {
+  width: 90vw;
+  display: flex;
   overflow: auto;
 }
 
@@ -39,22 +39,26 @@
 
 .item-notes {
   border: 1px solid rgb(50, 49, 49);
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 16px;
-  height: 10vh;
   margin-bottom: 5%;
-  margin-top: 5%;
-  width: 65vw;
-  text-align: center;
-  padding: 5px 0 5px 0;
+  padding: 10px;
+  width: 80vw;
+  color: #2a2a2a;
+  height: fit-content;
 }
 
-.notes-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 15vh;
-  width: 65vw;
+.item-notes-header {
+  color: #7d7a7a;
+  margin: 0;
+}
+
+.item-tag-header {
+  margin-right: 78%;
+}
+
+a:link {
+  text-decoration: none !important;
 }
 
 .item-link,
@@ -110,11 +114,10 @@ input {
 }
 
 .toggle-icons {
-  width: 50%;
+  width: 85%;
   margin: 10px;
   display: flex;
   justify-content: space-evenly;
-  border: 2px solid red;
 }
 
 .toggle-icon {

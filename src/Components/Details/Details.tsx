@@ -228,11 +228,12 @@ export const Details = (): JSX.Element => {
             <button className="add-to-list-btn" onClick={handleAddToList} type="submit">Add to List</button>
           </div> }
       {item && item.attributes.notes && (
-        <div className="notes-container">
-          <h2 className="item-notes-header">Notes</h2>
-          <p className="item-notes">{item.attributes.notes}</p>
-        </div>
+        <NavLink to={`/edit/${id}`}>
+            <p className="item-notes-header">Notes</p>
+            <p className="item-notes">{item.attributes.notes}</p>
+        </NavLink>
       )}
+      <p className="item-notes-header item-tag-header">Tags</p>
        {item && (
         <div className="item-details-container">
           {item.attributes.color && (
@@ -240,9 +241,6 @@ export const Details = (): JSX.Element => {
               <p className="item-details">{item.attributes.color}</p>
             </NavLink>
           )}
-          <NavLink to={`/edit/${id}`} className="item-link">
-            <p className="item-details">{item.attributes.season}</p>
-          </NavLink>
           {item.attributes.clothing_type && (
             <NavLink to={`/edit/${id}`} className="item-link">
               <p className="item-details">{item.attributes.clothing_type}</p>
@@ -250,9 +248,28 @@ export const Details = (): JSX.Element => {
           )}
           {item.attributes.size && (
             <NavLink className="item-link" to={`/edit/${id}`}>
-              <p className="item-details">{`size ${item.attributes.size}`}</p>
+              <p className="item-details">Size {item.attributes.size}</p>
             </NavLink>
           )}
+          <NavLink to={`/edit/${id}`} className="item-link">
+            {item.attributes.season === "all seasons" && 
+              <p className="item-details">Fall</p>}
+          </NavLink>
+          <NavLink to={`/edit/${id}`} className="item-link">
+            {item.attributes.season === "all seasons" && 
+              <p className="item-details">Winter</p>}
+          </NavLink>
+          <NavLink to={`/edit/${id}`} className="item-link">
+            {item.attributes.season === "all seasons" && 
+              <p className="item-details">Spring</p>}
+          </NavLink>
+          <NavLink to={`/edit/${id}`} className="item-link">
+            {item.attributes.season === "all seasons" && 
+              <p className="item-details">Summer</p>}
+          </NavLink>
+          <NavLink to={`/edit/${id}`} className="item-link">
+            {item.attributes.season !== "all seasons" && <p className="item-details">Season(s): {item.attributes.season}</p>}
+          </NavLink>
         </div>
       )}
     </section>
