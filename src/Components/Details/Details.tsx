@@ -269,7 +269,7 @@ export const Details = (): JSX.Element => {
               <p className="item-details">Summer</p>}
           </NavLink>
           <NavLink to={`/edit/${id}`} className="item-link">
-            {item.attributes.season !== "all seasons" && <p className="item-details">Season(s): {item.attributes.season}</p>}
+            {item.attributes.season !== "all seasons" && <p className="item-details">{item.attributes.season}</p>}
           </NavLink>
         </div>
       )}

@@ -41,7 +41,6 @@
   border: 1px solid rgb(50, 49, 49);
   border-radius: 4px;
   font-size: 16px;
-  margin-bottom: 5%;
   padding: 10px;
   width: 80vw;
   color: #2a2a2a;
@@ -51,10 +50,12 @@
 .item-notes-header {
   color: #7d7a7a;
   margin: 0;
+  margin-top: 15px;
 }
 
 .item-tag-header {
   margin-right: 78%;
+  margin-top: 15px;
 }
 
 a:link {
@@ -73,7 +74,7 @@ a:link {
 }
 
 .add-to-list-container {
-  margin: 8px auto 8px auto;
+  margin: 8px auto 25px auto;
   padding: 8px;
   border: 1px solid rgb(45, 44, 44);
   width: 80vw;
@@ -116,8 +117,8 @@ a:link {
 }
 
 .toggle-icons {
-  width: 85%;
-  margin: 10px;
+  width: 80vw;
+  margin-top: 10px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -159,6 +160,7 @@ a:link {
   border: 1px solid rgb(45, 44, 44);
   text-align: center;
   height: 20vh;
+  margin-top: 10px;
   width: 80vw;
   display: flex;
   flex-direction: column;
@@ -187,7 +189,7 @@ a:link {
   font-size: 18px;
   margin: 10px auto;
   background-color: rgb(247, 117, 117);
-  color: rgb(240, 213, 213);
+  color: rgb(246, 218, 218);
 }
 
 .delete-details-icon {
@@ -234,6 +236,6 @@ a:link {
 }
 
 .item-details-image {
-  height: 32vh;
-  width: 72vw;
+  height: 45vh;
+  width: 77vw;
 }
