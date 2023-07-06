@@ -289,22 +289,23 @@ a:link {
 
   .item-notes-header {
     position: absolute;
-    top: 395px;
+    top: 215px;
     left: 55%;
   }
 
   .item-tag-header {
     position: absolute;
-    top: 545px;
+    top: 350px;
     left: 55%;
   }
 
   .toggle-icons {
     position: absolute;
-    top: 210px;
-    left: 60%;
+    top: 580px;
+    left: 63%;
     width: 300px;
     padding: 5px;
+    display: block;
   }
 
   .toggle-icon {
@@ -313,30 +314,25 @@ a:link {
 
   .item-notes {
     position: absolute;
-    top: 420px;
+    top: 250px;
     left: 55%;
     width: 400px;
   }
 
   .item-details-container {
     position: absolute;
-    top: 580px;
+    top: 380px;
     left: 55%;
     width: 500px;
     flex-wrap: wrap;
   }
 
-  .toggle-icons {
-    position: absolute;
-    display: block;
-  }
-
   .toggle-delete-container,
   .add-to-list-container {
     position: absolute;
-    top: 260px;
+    top: 320px;
     left: 55%;
-    width: 450px;
+    width: 435px;
     height: 250px;
     z-index: 3;
   }
@@ -349,5 +345,11 @@ a:link {
 @media (min-width: 1200px) {
   .image-and-favorite-container-details {
     left: 20%;
+  }
+
+  .toggle-icons {
+    top: 610px;
+    left: 60%;
+       
   }
 }
