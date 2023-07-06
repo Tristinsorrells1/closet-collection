@@ -43,6 +43,7 @@ export const Details = (): JSX.Element => {
   const [lists, setLists] = useState<List[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedList, setSelectedList] = useState<string | any>("")
+  const [toggleDelete, setToggleDelete] = useState<boolean>(false)
 
 
   const fetchLists = async () => {
@@ -189,9 +190,31 @@ export const Details = (): JSX.Element => {
         
       )}
       <div className="toggle-icons">
-        <i className="fa-duotone fa-calendar-days toggle-icon" onClick={(() => setToggleCal(!toggleCal))}></i>
-        <i className="fa-light fa-list toggle-icon" onClick={(() => setToggleList(!toggleList))}></i>
+        <i className="fa-duotone fa-calendar-days toggle-icon" onClick={(() => {
+          setToggleDelete(false)
+          setToggleList(false)
+          setToggleCal(!toggleCal)})}></i>
+        <i className="fa-light fa-list toggle-icon"onClick={(() => {
+          setToggleDelete(false)
+          setToggleList(!toggleList)
+          setToggleCal(false)})}></i>
+         <NavLink to={`/edit/${id}`} className="edit-link">
+             <i className="fa-sharp fa-light fa-pencil toggle-icon"></i>
+          </NavLink>
+        <i className="fa-solid fa-trash toggle-icon" onClick={(() => {
+          setToggleDelete(!toggleDelete)
+          setToggleList(false)
+          setToggleCal(false)})}></i>
       </div>
+      {toggleDelete && <div className="toggle-delete-container">
+        <i className="fa-light fa-xmark-large close-delete-toggle" onClick={(() => setToggleDelete(false))}></i>
+        <p className="delete-warning-text">Delete Item? </p>
+        <p className="delete-warning-text">This action cannot be undone.</p>
+          <div className="details-delete-container" onClick={() => handleDelete(id!)}>
+            <img className="delete-details-icon" src="../delete-xxl.png"></img>
+            <span>Delete</span>
+          </div>
+        </div>}
       {toggleCal && <Calendar id={id} />}
           {toggleList &&  <div className="add-to-list-container">
               <form id="lists" name="lists" onSubmit={handleAddToList}></form>
@@ -202,28 +225,13 @@ export const Details = (): JSX.Element => {
                   <input type="radio" onChange={(() => setSelectedList(list.id))} id={list.id} name="list" key={list.id} ></input>
                 </div>
               ))}
-            <button onClick={handleAddToList} type="submit">Add to List</button>
+            <button className="add-to-list-btn" onClick={handleAddToList} type="submit">Add to List</button>
           </div> }
       {item && item.attributes.notes && (
         <div className="notes-container">
           <h2 className="item-notes-header">Notes</h2>
           <p className="item-notes">{item.attributes.notes}</p>
         </div>
-      )}
-      {!loading && !isDeleted && (
-        <section className="details-button-container"> 
-          <div className="edit-delete-container">
-            <NavLink to={`/edit/${id}`} className="edit-link">
-              <button className="details-edit-button">Edit</button>
-            </NavLink>
-            <button
-              className="details-delete-button"
-              onClick={() => handleDelete(id!)}
-            >
-              Delete
-            </button>
-          </div>
-        </section>
       )}
        {item && (
         <div className="item-details-container">
