@@ -5,11 +5,11 @@
       "type": "item",
       "attributes": {
         "user_id": 1,
-        "season": "all season",
+        "season": "fall",
         "clothing_type": "other",
         "size": "Large",
         "color": "red",
-        "image_url": "https://amazonpicture.com",
+        "image_url": "../red-top.avif",
         "notes": "Hand wash only"
       }
     },
