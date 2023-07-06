@@ -73,24 +73,26 @@ a:link {
 }
 
 .add-to-list-container {
-  border: 2px solid red;
-  text-align: center;
-  height: 100%;
+  margin: 8px auto 8px auto;
+  padding: 8px;
+  border: 1px solid rgb(45, 44, 44);
+  width: 80vw;
+  background-color: rgb(221, 221, 238);
+}
+
+.select-list-text {
+  font-size: 20px;
+  width: fit-content;
+  margin: -18px auto 10px auto;
 }
 
 .list-input-container {
   display: flex;
-  width: 40vw;
-  border: 2px solid green;
-  margin: auto;
-}
-
-
-input {
-  text-align: center;
-  width: 35vw;
-  align-self: center;
-  margin: 1vw;
+  width: 42vw;
+  border: 1px solid rgb(45, 44, 44);
+  margin: 10px auto 10px auto;
+  padding: 5px;
+  background-color: #F1F1F1;
 }
 
 .react-datepicker__month-container {
@@ -134,14 +136,14 @@ input {
 .add-to-list-btn {
   border: 1px solid rgb(45, 44, 44);
   color: rgb(45, 44, 44);
-  width: 30vw;
+  width: 70vw;
   max-width: 150px;
   margin: 15px auto 2px auto;
   display: block;
-  height: 5.5vh;
+  height: 3vh;
   padding: 0;
   text-align: top;
-  font-size: 15px;
+  font-size: 18px;
   background-image: linear-gradient(to right, #e7c0f4 0%, #c7d4ea 51%, #bba8f4 100%);
 }
 
@@ -161,22 +163,24 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  background-color: rgb(221, 221, 238);
 }
 
 
-.close-delete-toggle {
+.close-delete-toggle,
+.close-list-toggle {
   margin-left: 90%;
   font-size: 20px;
 }
 
 .delete-warning-text {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .details-delete-container {
   display: flex;
   justify-content: center;
-  border: 2px solid rgb(226, 50, 23);
+  border: 1px solid rgb(226, 50, 23);
   width: 35vw;
   padding: 3px;
   align-items: center;

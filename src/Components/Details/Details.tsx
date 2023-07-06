@@ -217,15 +217,16 @@ export const Details = (): JSX.Element => {
         </div>}
       {toggleCal && <Calendar id={id} />}
           {toggleList &&  <div className="add-to-list-container">
+             <i className="fa-light fa-xmark-large close-list-toggle" onClick={(() => setToggleList(false))}></i>
               <form id="lists" name="lists" onSubmit={handleAddToList}></form>
-              <label htmlFor="lists">Select a List:</label>
+              <label className="select-list-text" htmlFor="lists">Select a List:</label>
               {lists.map((list) => (
                 <div className="list-input-container" key={list.id}>
                  <label htmlFor="list">{list.name}</label>
                   <input type="radio" onChange={(() => setSelectedList(list.id))} id={list.id} name="list" key={list.id} ></input>
                 </div>
               ))}
-            <button className="add-to-list-btn" onClick={handleAddToList} type="submit">Add to List</button>
+            <button className="add-to-list-btn" onClick={handleAddToList} type="submit">Add Item</button>
           </div> }
       {item && item.attributes.notes && (
         <NavLink to={`/edit/${id}`}>
