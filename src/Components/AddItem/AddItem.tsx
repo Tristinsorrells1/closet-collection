@@ -64,7 +64,7 @@ useEffect(() => {
       <form className="form" id="form" onSubmit={(e => {e.preventDefault(); handleSubmit(e);})}>
         {image && <img src={image} alt="" className='image-preview'/>}
         <label htmlFor="image" className="upload-container">
-          Upload or take a photo
+          Upload Picture of Item
           <input 
             className='img-input'
             accept="image/*,capture=camera"
@@ -75,6 +75,7 @@ useEffect(() => {
             ref={imageInputRef}
           />
         </label>
+        <span>Type</span>
         <select  className="dropdown" name="clothing_type" required>
           <option value="other" hidden>Clothing Type</option>
           <option value="tops">Tops</option>
@@ -84,6 +85,7 @@ useEffect(() => {
           <option value="accessories">Accessories</option>
           <option value="other">Other</option>
         </select>
+        <span>Color</span>
         <select className="dropdown" name="color">
           <option value="unspecified">Color</option>
           <option value="red">Red</option>
@@ -97,6 +99,7 @@ useEffect(() => {
           <option value="neutral">Neutral</option>
           <option value="multi">Multi</option>
         </select>
+        <span>Season</span>
         <select className="dropdown" name="season">
           <option value="all_season" hidden>Season</option>
           <option value="all_season">All Seasons</option>
@@ -105,17 +108,11 @@ useEffect(() => {
           <option value="spring">Spring</option>
           <option value="summer">Summer</option>
         </select>
-        <label htmlFor="size" className="size-input">
-          Size:
-          <input type="text" name="size" className="size-input" />
-        </label>
-        <label htmlFor="notes" className="notes-input">
-          Notes:
-          <input className="notes-box" 
-            type="text" name="notes" />
-        </label>
-        <input type="reset" value="Clear" className="form-button-clear"></input>
-        <button type="submit" value="Submit" className="form-button-add">Add Item!</button>
+        <span>Size</span>
+        <input type="text" name="size" className="size-input" />
+        <span>Notes</span>
+        <input className="add-item-notes-box" type="text" name="notes" />
+        <button type="submit" value="Submit" className="add-item-button">Add Item</button>
       </form>
     </div>}
     </>
