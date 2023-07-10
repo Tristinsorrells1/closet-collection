@@ -53,21 +53,6 @@ p {
   width: 180px;
 }
 
-.form-button-add,
-.form-button-clear {
-  background-color: #b8c0ff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 10%;
-  width: 50vw;
-}
-
-.form-button-clear {
-  font-size: 16px;
-  height: 4.5vh;
-}
-
 .size-input {
   cursor: text;
   width: 180px; 

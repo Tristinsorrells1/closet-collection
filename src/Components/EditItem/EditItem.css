@@ -4,7 +4,33 @@
   flex-direction: column;
   height: 68vh;
   justify-content: center;
-  padding-bottom: 17%;
+  max-width: 550px;
+  margin: auto;
+  margin-top: 10vh;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.exit-edit-view {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.edit-save-button {
+  border: 1px solid rgb(45, 44, 44);
+  color: rgb(45, 44, 44);
+  width: 40vw;
+  max-width: 250px;
+  margin: auto;
+  height: 4vh;
+  font-size: 18px;
+  text-align: center;
+  padding: 0;
+  background-image: linear-gradient(to right, #e7c0f4 0%, #c7d4ea 51%, #bba8f4 100%);
 }
 
 .edit-form {
@@ -18,7 +44,11 @@
 .size-box {
   margin: 0 auto 0 auto;
   width: 100%;
-  font-size: 2vw;
+  font-size: 14px;
+}
+
+.notes-box {
+  margin-bottom: 20px;
 }
 
 .size-input {
@@ -33,33 +63,28 @@
   text-align: center;
 }
 
-@media (min-width: 695px) {
-  .edit-form {
-     margin-top: 10vh;
-    }
-}
-
-@media (min-width: 843px) {
-  .edit-form {
+@media (min-width: 700px) {
+.edit-form-container {
     margin-top: 15vh;
-  }
-}
-
-@media (min-width: 941px) {
-  .edit-form {
-    margin-top: 30vh;
-  }
-
-  .notes-box,
-  .size-box {
-    margin: 0 auto 0 auto;
-    width: 100%;
     font-size: 20px;
   }
-}
 
-@media (min-width: 1200px) {
-  .edit-form {
-    margin-top: 50vh;
+.exit-edit-view {
+  right: 0;
+  margin-right: 50px;
+  font-size: 25px;
   }
 }
+
+@media (min-width: 900px) {
+  .edit-form-container {
+    margin-top: 18vh;
+  }
+
+  .exit-edit-view {
+    right: 0;
+    margin-right: 10vw;
+    font-size: 25px;
+  }
+}
+

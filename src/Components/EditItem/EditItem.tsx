@@ -1,6 +1,6 @@
 import type { FormEvent } from 'react';
 import { useEffect, useState} from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import "./EditItem.css";
 import { getSingleItem, editItem } from "../../apiCall";
 
@@ -90,50 +90,56 @@ export const EditItem: React.FC = (): JSX.Element => {
   }
 
   return (
-    <div className="edit-form-container">
-      {loading && <p>Loading...</p>}
-      <form className="edit-form" onSubmit={(e => {e.preventDefault(); handleSubmit(e)})}>
-        <select  className="dropdown" id="itemType" name="clothing_type" required>
-          <option value="other" hidden>Clothing Type</option>
-          <option value="tops">Tops</option>
-          <option value="bottoms">Bottoms</option>
-          <option value="outerwear">Outerwear</option>
-          <option value="shoes">Shoes</option>
-          <option value="accessories">Accessories</option>
-          <option value="other">Other</option>
-        </select>
-        <select className="dropdown" id="itemColor" name="color">
-          <option value="unspecified">Color</option>
-          <option value="red">Red</option>
-          <option value="orange">Orange</option>
-          <option value="yellow">Yellow</option>
-          <option value="green">Green</option>
-          <option value="blue">Blue</option>
-          <option value="purple">Purple</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="neutral">Neutral</option>
-          <option value="multi">Multi</option>
-        </select>
-        <select className="dropdown" id="itemSeason" name="season">
-          <option value="all_season" hidden>Season</option>
-          <option value="all_season">All Seasons</option>
-          <option value="fall">Fall</option>
-          <option value="winter">Winter</option>
-          <option value="spring">Spring</option>
-          <option value="summer">Summer</option>
-        </select>
-        <label htmlFor="size" className="size-input">
-          Size
-          <input className="size-box" id="itemSize" type="text" name="size" />
-        </label>
-        <label htmlFor="notes" className="notes-input">
-          Notes
-          <input className="notes-box" id="itemNotes"
-            type="text" name="notes" />
-        </label>
-        <button type="submit" value="Submit" className="form-button-add">Save</button>
-        </form>
-    </div>
+    <>
+      <div className="edit-form-container">
+      <NavLink to={`/itemDetails/${params.id}`}>
+        <i className="fa-light fa-xmark-large exit-edit-view"></i>
+      </NavLink>
+        {loading && <p>Loading...</p>}
+        <h2>Edit Details</h2>
+        <form className="edit-form" onSubmit={(e => {e.preventDefault(); handleSubmit(e)})}>
+          <span>Type</span>
+          <select  className="dropdown" id="itemType" name="clothing_type" required>
+            <option value="tops">Tops</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="outerwear">Outerwear</option>
+            <option value="shoes">Shoes</option>
+            <option value="accessories">Accessories</option>
+            <option value="other">Other</option>
+          </select>
+          <span>Color</span>
+          <select className="dropdown" id="itemColor" name="color">
+            <option value="unspecified">Color</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="neutral">Neutral</option>
+            <option value="multi">Multi</option>
+          </select>
+          <span>Season</span>
+          <select className="dropdown" id="itemSeason" name="season">
+            <option value="all_season" hidden>Season</option>
+            <option value="all_season">All Seasons</option>
+            <option value="fall">Fall</option>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+            <option value="summer">Summer</option>
+          </select>
+          <label htmlFor="size" className="size-input">
+            Size
+            <input className="size-box" id="itemSize" type="text" name="size" />
+          </label>
+          <span>Notes</span>
+            <input className="notes-box" id="itemNotes"
+              type="text" name="notes" />
+          <button type="submit" value="Submit" className="edit-save-button">Save</button>
+          </form>
+      </div>
+    </>
   );
 };
